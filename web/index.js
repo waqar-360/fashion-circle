@@ -4,9 +4,10 @@ import { readFileSync } from "fs";
 import express from "express";
 import serveStatic from "serve-static";
 
-import shopify from "./shopify.js";
-import productCreator from "./product-creator.js";
-import GDPRWebhookHandlers from "./gdpr.js";
+import shopify from "./src/shopify.js";
+import productCreator from "./src/product-creator.js";
+import GDPRWebhookHandlers from "./src/gdpr.js";
+import { createServer as createViteServer } from 'vite'
 
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT, 10);
 

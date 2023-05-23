@@ -7,6 +7,8 @@ import {
   QueryProvider,
   PolarisProvider,
 } from "./components";
+import Login from "./pages/dashboard";
+import Dashboard from "./pages/dashboard";
 
 export default function App() {
   // Any .tsx or .jsx files in /pages will become a route
@@ -14,22 +16,23 @@ export default function App() {
   const pages = import.meta.globEager("./pages/**/!(*.test.[jt]sx)*.([jt]sx)");
 
   return (
-    <PolarisProvider>
-      <BrowserRouter>
-        <AppBridgeProvider>
-          <QueryProvider>
-            <NavigationMenu
-              navigationLinks={[
-                {
-                  label: "Page name",
-                  destination: "/pagename",
-                },
-              ]}
-            />
-            <Routes pages={pages} />
-          </QueryProvider>
-        </AppBridgeProvider>
-      </BrowserRouter>
-    </PolarisProvider>
+    <Dashboard></Dashboard>
+    // <PolarisProvider>
+    //   <BrowserRouter>
+    //     <AppBridgeProvider>
+    //       <QueryProvider>
+    //         <NavigationMenu
+    //           navigationLinks={[
+    //             {
+    //               label: "Page name",
+    //               destination: "/pagename",
+    //             },
+    //           ]}
+    //         />
+    //         <Routes pages={pages} />
+    //       </QueryProvider>
+    //     </AppBridgeProvider>
+    //   </BrowserRouter>
+    // </PolarisProvider>
   );
 }

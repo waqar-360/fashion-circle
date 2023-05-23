@@ -4,16 +4,21 @@
   "main": "web/index.js",
   "license": "UNLICENSED",
   "scripts": {
-    "shopify": "shopify",
-    "build": "shopify app build",
-    "dev": "shopify app dev",
-    "info": "shopify app info",
-    "generate": "shopify app generate",
-    "deploy": "shopify app deploy"
+    "build": "npm run build:client",
+    "build:client": "vite build --outDir dist/client",
+    "serve": "cross-env NODE_ENV=production node web/index.js",
+    "start": "npm run serve",
+    "client": "cd web/frontend && npm run dev",
+    "server": "cd web && npm run dev",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "dependencies": {
     "@shopify/app": "3.45.4",
-    "@shopify/cli": "3.45.4"
+    "@shopify/cli": "3.45.4",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.22",
+    "vite": "^4.3.8"
   },
   "author": "waqar360"
 }

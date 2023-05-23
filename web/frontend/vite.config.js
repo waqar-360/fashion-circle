@@ -3,6 +3,8 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import https from "https";
 import react from "@vitejs/plugin-react";
+import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+dotenv.config()
 
 if (
   process.env.npm_lifecycle_event === "build" &&
@@ -30,7 +32,7 @@ if (host === "localhost") {
   hmrConfig = {
     protocol: "ws",
     host: "localhost",
-    port: 64999,
+    port: process.env.FRONTEND_PORT,
     clientPort: 64999,
   };
 } else {
@@ -54,10 +56,10 @@ export default defineConfig({
   server: {
     host: "localhost",
     port: process.env.FRONTEND_PORT,
-    hmr: hmrConfig,
+    //hmr: hmrConfig,
     proxy: {
-      "^/(\\?.*)?$": proxyOptions,
-      "^/api(/|(\\?.*)?$)": proxyOptions,
+      // "^/(\\?.*)?$": proxyOptions,
+      // "^/api(/|(\\?.*)?$)": proxyOptions,
     },
   },
 });
